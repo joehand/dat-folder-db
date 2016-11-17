@@ -3,8 +3,8 @@
 Wrapper of level to create/resume a `.dat` folder database. If there is an existing `.dat` folder, it will get the key of the existing dat, allowing it to be resumed.
 
 ```js
-var datFolder = require('dat-folder-db')
-datFolder({dir: 'my_folder'}, function (err, db, existingKey) {
+var datDb = require('dat-folder-db')
+datDb(dir, function (err, db, existingKey, saveKey) {
   if (err) throw err
   var resume = !!existingKey // resume the dat if a key exists
   // use db with hyperdrive
@@ -19,12 +19,14 @@ See `example.js` for a full example.
 
 ## API
 
-### `datFolder(opts, cb)`
+### `datFolder(dir, opts, cb)`
 
 Creates a level db in the `.dat` folder and checks if there is an existing key saved there.
 
 * `opts.dir` is required. This is the base path for the dat folder. 
-* `cb` is called with `(err, db, existingKey)` where `db` is a level-party database in `dir/.dat`
+* `cb` is called with `(err, db, existingKey, saveKey)` where `db` is a level-party database in `dir/.dat`
+
+`saveKey` is a function to save the key back to the database.
 
 ## License 
 
