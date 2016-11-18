@@ -1,4 +1,4 @@
-# dat-folder-db
+# dat-folder-db [![Travis](https://img.shields.io/travis/joehand/dat-folder-db.svg?style=flat-square)](https://travis-ci.org/joehand/dat-folder-db) [![npm](https://img.shields.io/npm/v/dat-js.svg?style=flat-square)](https://npmjs.org/package/dat-folder-db)
 
 Make Dat CLI compatible databases. A database made with `dat-folder-db` can be resumed with the Dat CLI.
 
