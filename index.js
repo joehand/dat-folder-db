@@ -39,5 +39,4 @@ module.exports = function (dir, opts, cb) {
     if (typeof key !== 'string') key = encoding.encode(key)
     db.put(DB_KEY, key, cb)
   }
-
 }
