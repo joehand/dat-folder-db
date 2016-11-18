@@ -1,7 +1,7 @@
 {
   "name": "dat-folder-db",
   "version": "2.1.0",
-  "description": "",
+  "description": "create .dat folders compatible with the dat CLI",
   "main": "index.js",
   "scripts": {
     "test": "standard && tape test.js | tap-spec"
