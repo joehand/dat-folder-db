@@ -1,6 +1,6 @@
 {
   "name": "dat-folder-db",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "create .dat folders compatible with the dat CLI",
   "main": "index.js",
   "scripts": {
