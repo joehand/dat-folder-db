@@ -33,7 +33,7 @@ module.exports = function (dir, opts, cb) {
   function getKey (db, cb) {
     db.get(DB_KEY, function (err, value) {
       if (err && !err.notFound) return cb(err)
-      cb(null, encoding.decode(value))
+      if (value) cb(null, encoding.decode(value))
     })
   }
 
