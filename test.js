@@ -75,6 +75,11 @@ test('opts.dbName option creates different db', function (t) {
   })
 })
 
+test('lock error passed to callback', function (t) {
+  t.skip('TODO')
+  t.end()
+})
+
 function checkDirExists (dir) {
   fs.accessSync(dir, fs.F_OK)
 }
