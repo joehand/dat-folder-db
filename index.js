@@ -19,27 +19,28 @@ module.exports = function (dir, opts, cb) {
     exists = true
   } catch (e) { }
 
-  var db = level(dbDir, function (err) {
+  level(dbDir, function (err, db) {
     if (err) return cb(err)
 
     // db didn't exist, so we know not resumed
     if (!exists) return cb(null, db, null, putKey)
-    getKey(db, function (err, existingKey) {
+    getKey(function (err, existingKey) {
       if (err) return cb(err)
       cb(null, db, existingKey, putKey)
     })
+
+    function getKey (cb) {
+      db.get(DB_KEY, function (err, value) {
+        if (err && !err.notFound) return cb(err)
+        if (!value) return cb(null)
+        cb(null, encoding.decode(value))
+      })
+    }
+
+    function putKey (key, cb) {
+      if (!key) return cb('key required to save')
+      if (typeof key !== 'string') key = encoding.encode(key)
+      db.put(DB_KEY, key, cb)
+    }
   })
-
-  function getKey (db, cb) {
-    db.get(DB_KEY, function (err, value) {
-      if (err && !err.notFound) return cb(err)
-      if (value) cb(null, encoding.decode(value))
-    })
-  }
-
-  function putKey (key, cb) {
-    if (!key) return cb('key required to save')
-    if (typeof key !== 'string') key = encoding.encode(key)
-    db.put(DB_KEY, key, cb)
-  }
 }
